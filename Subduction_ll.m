@@ -1268,7 +1268,7 @@ while timesum/(1e6*3600*24*365) < model_time_end % or alternatively: for ntimest
     % by calling function Stokes_Continuity_solver_grid() 
     % with viscoelastic numerical viscosity
     % and modified right parts
-    [vx1,resx1,vy1,resy1,pr1,resc1]=Stokes_Continuity_solver(prfirst,etas0,etan0,xnum,ynum,gridx,gridy,RX1,RY1,RC1,bleft,bright,btop,bbottom,bintern);
+    [vx1,resx1,vy1,resy1,pr1,resc1]=Stokes_Continuity_solver_ll(prfirst,etas0,etan0,xnum,ynum,gridx,gridy,RX1,RY1,RC1,bleft,bright,btop,bbottom,bintern);
 
     % Computing EPS'xx=-EPS'yy, EPSxy=EPSyx deviatoric strain rate tensor components from vx, vy
     % Computing spin tensor Espin
@@ -1757,7 +1757,7 @@ while timesum/(1e6*3600*24*365) < model_time_end % or alternatively: for ntimest
         tk0=tk1;
         while (timesteps<timestep)
             % Solving Temperature equation with thermal timestep
-           [tk2,rest]=Temperature_solver_grid(timestept,xnum,ynum,gridx,gridy,kt1,rhocp1,tk0,RT1,bleftt,brightt,btopt,bbottomt);
+           [tk2,rest]=Temperature_solver_grid_ll(timestept,xnum,ynum,gridx,gridy,kt1,rhocp1,tk0,RT1,bleftt,brightt,btopt,bbottomt);
            % Computing temperature changes
             dtk1=tk2-tk0;
             % Checking temperature changes
